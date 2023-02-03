@@ -8,6 +8,7 @@ def spend_points(amount, transactions):
     assert amount >= 0
 
     payers = defaultdict(int)
+    # sort the transactions by timestamp
     sorted_transactions = sorted(transactions, key=lambda x: x[2])
     transact = True
     for payer, points, timestamp in sorted_transactions:
@@ -36,6 +37,7 @@ def spend_points(amount, transactions):
 
     return dict(payers)
 
+# helper function to check if all payers have positive points
 def all_positive(payers):
     for payer in payers:
         if payers[payer] < 0:
